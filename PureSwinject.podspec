@@ -15,4 +15,8 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.11"
   s.tvos.deployment_target = "9.0"
   s.watchos.deployment_target = "2.0"
+
+  s.dependency "Pure", "~> 1.1"
+  s.dependency "Swinject", "~> 2.6"
+  s.dependency "SwinjectAutoregistration", "~> 2.7"
 end
