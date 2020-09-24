@@ -1,6 +1,5 @@
 // WARNING: This swift file is auto generated. Don't modify this file directly.
 
-
 @_exported import Pure
 @_exported import Swinject
 @_exported import SwinjectAutoregistration
