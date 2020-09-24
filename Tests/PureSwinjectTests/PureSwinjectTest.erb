@@ -1,0 +1,41 @@
+<% puts "// WARNING: This swift file is auto generated. Don't modify this file directly.\n\n" %>
+<% arguments = 0..20 %>
+
+import XCTest
+import PureSwinject
+
+final class PureSwinjectTest: XCTestCase {
+  private var container: Container!
+
+  override func setUp() {
+    super.setUp()
+    self.container = Container()
+<% for i in arguments %>
+    self.container.autoregister(Dep<%= i %>.Factory.self, dependency: Dep<%= i %>.Dependency.init)
+    self.container.autoregister(Dep<%= i %>.Configurator.self, dependency: Dep<%= i %>.Dependency.init)
+<% end %>
+  }
+<% for i in arguments %>
+
+  func testDep<%= i %>() {
+    XCTAssertNotNil(self.container.resolve(Dep<%= i %>.Factory.self))
+    XCTAssertNotNil(self.container.resolve(Dep<%= i %>.Configurator.self))
+  }
+<% end %>
+}
+<% for i in arguments %>
+
+private final class Dep<%= i%>: FactoryModule, ConfiguratorModule {
+  struct Dependency {
+<% for j in 0...i %>
+    let dep<%= j %>: Dep<%= j %>.Factory
+<% end %>
+  }
+
+  init(dependency: Dependency, payload: Payload) {
+  }
+
+  func configure(dependency: Dependency, payload: Payload) {
+  }
+}
+<% end %>
