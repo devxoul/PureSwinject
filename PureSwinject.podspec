@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "PureSwinject"
-  s.version          = "1.1.0"
+  s.version          = "1.2.0"
   s.summary          = "Auto register Pure factories to Swinject"
   s.homepage         = "https://github.com/devxoul/PureSwinject"
   s.license          = { :type => "MIT", :file => "LICENSE" }
