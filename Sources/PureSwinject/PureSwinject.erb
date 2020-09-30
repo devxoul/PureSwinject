@@ -47,10 +47,7 @@ public extension Container {
   @discardableResult
   private func autoregister<Module>(_ configurator: Configurator<Module>.Type) -> ServiceEntry<Configurator<Module>> where Module: ConfiguratorModule {
     self.register((() -> Module.Dependency).self) { r in
-      // If the dependency is resolved lazily, the container cannot verify missing dependencies.
-      // But it can cause overhead so we need to find a better solution in the future.
-      let dependency = r.resolve(Module.Dependency.self)!
-      return { dependency }
+      return { r.resolve(Module.Dependency.self)! }
     }
     return self.autoregister(Configurator<Module>.self, initializer: Configurator<Module>.init)
   }

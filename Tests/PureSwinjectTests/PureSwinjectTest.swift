@@ -53,6 +53,10 @@ final class PureSwinjectTest: XCTestCase {
     self.container.autoregister(Dep20.Configurator.self, dependency: Dep20.Dependency.init)
   }
 
+  func testVerify() {
+    XCTAssertNoThrow(try self.container.verify())
+  }
+
   func testDep0() {
     XCTAssertNotNil(self.container.resolve(Dep0.Factory.self))
     XCTAssertNotNil(self.container.resolve(Dep0.Configurator.self))

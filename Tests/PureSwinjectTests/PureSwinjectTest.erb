@@ -14,6 +14,10 @@ final class PureSwinjectTest: XCTestCase {
     self.container.autoregister(Dep<%= i %>.Configurator.self, dependency: Dep<%= i %>.Dependency.init)
 <% end %>
   }
+
+  func testVerify() {
+    XCTAssertNoThrow(try self.container.verify())
+  }
 <% for i in arguments %>
 
   func testDep<%= i %>() {
