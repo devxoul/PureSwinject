@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
 
   s.dependency "Pure", "~> 1.1"
   s.dependency "Swinject", "~> 2.6"
-  s.dependency "SwinjectAutoregistration", "~> 2.7"
+  s.dependency "SwinjectSafeAuto", "~> 1.0"
 end

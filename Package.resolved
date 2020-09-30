@@ -38,12 +38,21 @@
         }
       },
       {
-        "package": "SwinjectAutoregistration",
-        "repositoryURL": "https://github.com/Swinject/SwinjectAutoregistration",
+        "package": "SwinjectSafeAuto",
+        "repositoryURL": "https://github.com/devxoul/SwinjectSafeAuto",
         "state": {
           "branch": null,
-          "revision": "136e57231434d038c3beef939e81f60f36ec8aec",
-          "version": "2.7.0"
+          "revision": "7c818ceec8847d3af708c5d3aca605f25b514605",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "WeakMapTable",
+        "repositoryURL": "https://github.com/ReactorKit/WeakMapTable",
+        "state": {
+          "branch": null,
+          "revision": "eda6ba374666bb2177034b6418025103cc72bcbf",
+          "version": "1.1.0"
         }
       }
     ]

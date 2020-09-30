@@ -2,7 +2,7 @@
 
 @_exported import Pure
 @_exported import Swinject
-@_exported import SwinjectAutoregistration
+@_exported import SwinjectSafeAuto
 
 public extension Container {
   func autoregister<Module, Arg1>(_ factory: Factory<Module>.Type, dependency: @escaping ((Arg1)) -> Module.Dependency) where Module: FactoryModule {
