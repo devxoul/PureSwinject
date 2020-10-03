@@ -25,6 +25,45 @@ final class PureSwinjectTest: XCTestCase {
     XCTAssertNotNil(self.container.resolve(Dep<%= i %>.Configurator.self))
   }
 <% end %>
+
+<% for i in arguments %>
+
+  func testDep<%= i %>ThreadSafety() {
+    let expectation = XCTestExpectation()
+    let total: Int = 10
+
+    let lock = NSLock()
+    var count: Int = 0
+
+    let resolver = self.container.synchronize()
+
+    for _ in 0..<total {
+      DispatchQueue.global().async {
+        let factory = resolver.resolve(Dep<%= i %>.Factory.self)!
+        let object = factory.create()
+
+        let configurator = resolver.resolve(Dep<%= i %>.Configurator.self)!
+        configurator.configure(object)
+
+        DispatchQueue.global().async {
+<% for j in 0...i %>
+          _ = object.dependency.dep<%= j %>.create()
+<% end %>
+
+          lock.lock()
+          count += 1
+          lock.unlock()
+
+          if count == total {
+            expectation.fulfill()
+          }
+        }
+      }
+    }
+
+    XCTWaiter().wait(for: [expectation], timeout: 3)
+  }
+<% end %>
 }
 <% for i in arguments %>
 
@@ -35,10 +74,14 @@ private final class Dep<%= i%>: FactoryModule, ConfiguratorModule {
 <% end %>
   }
 
+  var dependency: Dependency
+
   init(dependency: Dependency, payload: Payload) {
+    self.dependency = dependency
   }
 
   func configure(dependency: Dependency, payload: Payload) {
+    self.dependency = dependency
   }
 }
 <% end %>
