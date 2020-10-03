@@ -21,10 +21,7 @@ public extension Container {
   @discardableResult
   private func autoregister<Module>(_ factory: Factory<Module>.Type) -> ServiceEntry<Factory<Module>> where Module: FactoryModule {
     self.register((() -> Module.Dependency).self) { r in
-      // If the dependency is resolved lazily, the container cannot verify missing dependencies.
-      // But it can cause overhead so we need to find a better solution in the future.
-      let dependency = r.resolve(Module.Dependency.self)!
-      return { dependency }
+      return { r.resolve(Module.Dependency.self)! }
     }
     return self.autoregister(Factory<Module>.self, initializer: Factory<Module>.init)
   }
