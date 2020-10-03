@@ -14,17 +14,11 @@ public extension Container {
     }
 <% end %>
     self.autoregister(Module.Dependency.self, initializer: dependency).inObjectScope(.container)
-    self.autoregister(factory).inObjectScope(.container)
+    self.register((() -> Module.Dependency).self) { r in { r.resolve(Module.Dependency.self)! } }.inObjectScope(.container)
+    self.autoregister(Factory<Module>.self, initializer: Factory<Module>.init).inObjectScope(.container)
   }
 
 <% end %>
-  @discardableResult
-  private func autoregister<Module>(_ factory: Factory<Module>.Type) -> ServiceEntry<Factory<Module>> where Module: FactoryModule {
-    self.register((() -> Module.Dependency).self) { r in
-      return { r.resolve(Module.Dependency.self)! }
-    }
-    return self.autoregister(Factory<Module>.self, initializer: Factory<Module>.init)
-  }
 }
 
 public extension Container {
@@ -37,15 +31,9 @@ public extension Container {
     }
 <% end %>
     self.autoregister(Module.Dependency.self, initializer: dependency).inObjectScope(.container)
-    self.autoregister(configurator).inObjectScope(.container)
+    self.register((() -> Module.Dependency).self) { r in { r.resolve(Module.Dependency.self)! } }.inObjectScope(.container)
+    self.autoregister(Configurator<Module>.self, initializer: Configurator<Module>.init).inObjectScope(.container)
   }
 
 <% end %>
-  @discardableResult
-  private func autoregister<Module>(_ configurator: Configurator<Module>.Type) -> ServiceEntry<Configurator<Module>> where Module: ConfiguratorModule {
-    self.register((() -> Module.Dependency).self) { r in
-      return { r.resolve(Module.Dependency.self)! }
-    }
-    return self.autoregister(Configurator<Module>.self, initializer: Configurator<Module>.init)
-  }
 }
