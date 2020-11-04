@@ -184,7 +184,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -218,7 +218,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -253,7 +253,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -289,7 +289,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -326,7 +326,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -364,7 +364,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -403,7 +403,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -443,7 +443,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -484,7 +484,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -526,7 +526,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -569,7 +569,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -613,7 +613,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -658,7 +658,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -704,7 +704,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -751,7 +751,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -799,7 +799,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -848,7 +848,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -898,7 +898,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -949,7 +949,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -1001,7 +1001,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
@@ -1054,7 +1054,7 @@ final class PureSwinjectTest: XCTestCase {
 
           lock.lock()
           count += 1
-          lock.unlock()
+          defer{ lock.unlock() }
 
           if count == total {
             expectation.fulfill()
