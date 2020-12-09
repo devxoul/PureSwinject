@@ -11,7 +11,7 @@ let package = Package(
     .library(name: "PureSwinject", targets: ["PureSwinject"]),
   ],
   dependencies: [
-     .package(url: "https://github.com/devxoul/Pure", from: "1.0.0"),
+     .package(url: "https://github.com/devxoul/Pure", .branch("generic-factory")),
      .package(url: "https://github.com/Swinject/Swinject", from: "2.6.0"),
      .package(url: "https://github.com/devxoul/SwinjectSafeAuto", from: "1.0.0"),
   ],
