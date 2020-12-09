@@ -295,3 +295,266 @@ public extension Container {
   }
 
 }
+
+public extension Container {
+  func autoregister<Module, Dependency, Payload, Arg1>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Arg19>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Arg19)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+  func autoregister<Module, Dependency, Payload, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Arg19, Arg20>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9, Arg10, Arg11, Arg12, Arg13, Arg14, Arg15, Arg16, Arg17, Arg18, Arg19, Arg20)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+}

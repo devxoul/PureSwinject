@@ -39,3 +39,22 @@ public extension Container {
 
 <% end %>
 }
+
+public extension Container {
+<% for i in arguments %>
+<% args = (1..i).map { |j| "Arg#{j}" }.join(", ") %>
+  func autoregister<Module, Dependency, Payload, <%= args %>>(
+    _ factory: GenericFactory<Module, Payload>.Type,
+    initializer: @escaping (Dependency, Payload) -> Module,
+    dependency: @escaping ((<%= args %>)) -> Dependency
+  ) {
+    let resolver = self.synchronize()
+    self.autoregister(Dependency.self, initializer: dependency).inObjectScope(.container)
+    self.register(GenericFactory<Module, Payload>.self) { _ in
+      let dependency = resolver.resolve(Dependency.self)!
+      return GenericFactory<Module, Payload>.init(initializer, dependency: dependency)
+    }
+  }
+
+<% end %>
+}

@@ -12,6 +12,7 @@ final class PureSwinjectTest: XCTestCase {
 <% for i in arguments %>
     self.container.autoregister(Dep<%= i %>.Factory.self, dependency: Dep<%= i %>.Dependency.init)
     self.container.autoregister(Dep<%= i %>.Configurator.self, dependency: Dep<%= i %>.Dependency.init)
+    self.container.autoregister(GenericDep<%= i %>Protocol.Factory.self, initializer: GenericDep<%= i %>.init, dependency: GenericDep<%= i %>.Dependency.init)
 <% end %>
   }
 
@@ -23,10 +24,11 @@ final class PureSwinjectTest: XCTestCase {
   func testDep<%= i %>() {
     XCTAssertNotNil(self.container.resolve(Dep<%= i %>.Factory.self))
     XCTAssertNotNil(self.container.resolve(Dep<%= i %>.Configurator.self))
+    XCTAssertNotNil(self.container.resolve(GenericDep<%= i %>Protocol.Factory.self))
   }
 <% end %>
 
-<% for i in arguments %>
+<% for i in 1..arguments.max %>
 
   func testDep<%= i %>ThreadSafety() {
     let expectation = XCTestExpectation()
@@ -45,9 +47,13 @@ final class PureSwinjectTest: XCTestCase {
         let configurator = resolver.resolve(Dep<%= i %>.Configurator.self)!
         configurator.configure(object)
 
+        let genericFactory = resolver.resolve(GenericDep<%= i %>.Factory.self)!
+        let genericObject = genericFactory.create()
+
         DispatchQueue.global().async {
 <% for j in 0...i %>
           _ = object.dependency.dep<%= j %>.create()
+          _ = genericObject.dependency.dep<%= j %>.create()
 <% end %>
 
           lock.lock()
@@ -81,6 +87,30 @@ private final class Dep<%= i%>: FactoryModule, ConfiguratorModule {
   }
 
   func configure(dependency: Dependency, payload: Payload) {
+    self.dependency = dependency
+  }
+}
+<% end %>
+
+<% for i in arguments %>
+
+private protocol GenericDep<%= i%>Protocol {
+  typealias Factory = GenericFactory<GenericDep<%= i%>Protocol, Payload>
+  typealias Payload = Void
+
+  var dependency: GenericDep<%= i%>.Dependency { get }
+}
+
+private final class GenericDep<%= i%>: GenericDep<%= i%>Protocol {
+  struct Dependency {
+<% for j in 0...i %>
+    let dep<%= j %>: GenericDep<%= j %>Protocol.Factory
+<% end %>
+  }
+
+  var dependency: Dependency
+
+  init(dependency: Dependency, payload: Payload) {
     self.dependency = dependency
   }
 }
